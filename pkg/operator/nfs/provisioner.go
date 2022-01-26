@@ -127,15 +127,13 @@ func (p *Provisioner) Provision(ctx context.Context, options controller.Provisio
 
 	pvName := strings.Join([]string{options.PVC.Namespace, options.PVC.Name, options.PVName}, "-")
 	fullPath := path.Join(exportPath, pvName)
-	if err := os.MkdirAll(fullPath, 0777); err != nil {
+	if err := os.MkdirAll(fullPath, 0700); err != nil {
 		return nil, controller.ProvisioningFinished, errors.New("unable to create directory to provision new pv: " + err.Error())
 	}
 
 	if err := os.Chmod(fullPath, 0777); err != nil {
 		return nil, controller.ProvisioningFinished, errors.New("unable to change directory permision to 0777: " + err.Error())
 	}
-	stats, _ := os.Stat(fullPath)
-	logger.Infof("Permission for folder %s: %s", fullPath, stats.Mode())
 	capacity := options.PVC.Spec.Resources.Requests[v1.ResourceName(v1.ResourceStorage)]
 	block, err := p.createQuota(exportPath, fullPath, strconv.FormatInt(capacity.Value(), 10))
 	if err != nil {
