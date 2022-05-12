@@ -23,13 +23,6 @@ FROM NFS_BASEIMAGE
 
 RUN DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
- && apt-get install -y gnupg \
- && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 10353E8834DC57CA \
- && echo "deb http://ppa.launchpad.net/nfs-ganesha/nfs-ganesha-3.0/ubuntu xenial main" > /etc/apt/sources.list.d/nfs-ganesha.list \
- && echo "deb http://ppa.launchpad.net/nfs-ganesha/libntirpc-3.0/ubuntu xenial main" > /etc/apt/sources.list.d/libntirpc.list \
- && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 13e01b7b3fe869a9 \
- && echo "deb http://ppa.launchpad.net/gluster/glusterfs-6/ubuntu xenial main" > /etc/apt/sources.list.d/glusterfs.list \
- && apt-get update \
  && apt-get install -y netbase nfs-common dbus nfs-ganesha nfs-ganesha-vfs glusterfs-common xfsprogs \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
