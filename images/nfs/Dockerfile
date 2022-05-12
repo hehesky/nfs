@@ -23,7 +23,7 @@ FROM NFS_BASEIMAGE
 
 RUN DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
- && apt-get install gnupg \
+ && apt-get install -y gnupg \
  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 10353E8834DC57CA \
  && echo "deb http://ppa.launchpad.net/nfs-ganesha/nfs-ganesha-3.0/ubuntu jammy main" > /etc/apt/sources.list.d/nfs-ganesha.list \
  && echo "deb http://ppa.launchpad.net/nfs-ganesha/libntirpc-3.0/ubuntu jammy main" > /etc/apt/sources.list.d/libntirpc.list \
