@@ -22,7 +22,7 @@ FROM NFS_BASEIMAGE
 # 3. Use device major/minor as fsid major/minor to work on OverlayFS
 
 RUN DEBIAN_FRONTEND=noninteractive \
- && apt-get upate \
+ && apt-get update \
  && apt-get install gnupg \
  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 10353E8834DC57CA \
  && echo "deb http://ppa.launchpad.net/nfs-ganesha/nfs-ganesha-3.0/ubuntu jammy main" > /etc/apt/sources.list.d/nfs-ganesha.list \
