@@ -22,11 +22,13 @@ FROM NFS_BASEIMAGE
 # 3. Use device major/minor as fsid major/minor to work on OverlayFS
 
 RUN DEBIAN_FRONTEND=noninteractive \
+ && apt-get upate \
+ && apt-get install gnupg \
  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 10353E8834DC57CA \
- && echo "deb http://ppa.launchpad.net/nfs-ganesha/nfs-ganesha-3.0/ubuntu xenial main" > /etc/apt/sources.list.d/nfs-ganesha.list \
- && echo "deb http://ppa.launchpad.net/nfs-ganesha/libntirpc-3.0/ubuntu xenial main" > /etc/apt/sources.list.d/libntirpc.list \
+ && echo "deb http://ppa.launchpad.net/nfs-ganesha/nfs-ganesha-3.0/ubuntu jammy main" > /etc/apt/sources.list.d/nfs-ganesha.list \
+ && echo "deb http://ppa.launchpad.net/nfs-ganesha/libntirpc-3.0/ubuntu jammy main" > /etc/apt/sources.list.d/libntirpc.list \
  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 13e01b7b3fe869a9 \
- && echo "deb http://ppa.launchpad.net/gluster/glusterfs-6/ubuntu xenial main" > /etc/apt/sources.list.d/glusterfs.list \
+ && echo "deb http://ppa.launchpad.net/gluster/glusterfs-6/ubuntu jammy main" > /etc/apt/sources.list.d/glusterfs.list \
  && apt-get update \
  && apt-get install -y netbase nfs-common dbus nfs-ganesha nfs-ganesha-vfs glusterfs-common xfsprogs \
  && apt-get clean \

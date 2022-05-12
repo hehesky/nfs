@@ -19,7 +19,7 @@ include ../image.mk
 
 NFS_IMAGE = $(BUILD_REGISTRY)/nfs-$(GOARCH)
 
-NFS_BASE ?= docker.io/library/ubuntu:latest
+NFS_BASE ?= docker.io/library/ubuntu:jammy
 
 ifeq ($(GOARCH),amd64)
 NFS_BASEIMAGE = $(NFS_BASE)
